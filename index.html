@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOOGOLOGY TOOLS</title>
+    <style>
+        :root {
+            --bg-color: #050814;
+            --text-color: #a0c0d0;
+            --accent-color: #00f0ff;
+            --card-bg: rgba(0, 240, 255, 0.04);
+            --hover-bg: rgba(0, 240, 255, 0.11);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Consolas, "Courier New", monospace;
+            background-image:
+                radial-gradient(circle at top, rgba(0, 240, 255, 0.12), transparent 35%),
+                linear-gradient(rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+            background-size: auto, 32px 32px, 32px 32px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .nav-line {
+            margin-bottom: 34px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-color);
+            text-decoration: none;
+            border: 1px solid rgba(0, 240, 255, 0.35);
+            padding: 10px 15px;
+            border-radius: 4px;
+            background: rgba(0, 240, 255, 0.04);
+            letter-spacing: 1px;
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 240, 255, 0.12);
+            box-shadow: 0 0 16px rgba(0, 240, 255, 0.25);
+            transform: translateX(-2px);
+        }
+
+        .topbar {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.22);
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--accent-color);
+            letter-spacing: 5px;
+            text-shadow: 0 0 14px rgba(0, 240, 255, 0.6);
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            font-size: 0.9rem;
+            opacity: 0.72;
+            letter-spacing: 2px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1em;
+            background: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
+            animation: blink 1s step-end infinite;
+            vertical-align: -2px;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .category {
+            margin-bottom: 42px;
+        }
+
+        .category-title {
+            color: #ffffff;
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-title::before {
+            content: "[SUB.DIR]";
+            color: var(--accent-color);
+            margin-right: 12px;
+            opacity: 0.85;
+            font-size: 0.85rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .link-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 118px;
+            padding: 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 240, 255, 0.16);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.25s ease;
+        }
+
+        .link-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent-color);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: 0.25s ease;
+            box-shadow: 0 0 12px var(--accent-color);
+        }
+
+        .link-card:hover {
+            background: var(--hover-bg);
+            border-color: rgba(0, 240, 255, 0.55);
+            box-shadow: 0 0 22px rgba(0, 240, 255, 0.15) inset;
+            transform: translateY(-2px);
+        }
+
+        .link-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .link-title {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.12rem;
+            margin-bottom: 10px;
+        }
+
+        .link-desc {
+            font-size: 0.86rem;
+            line-height: 1.45;
+            opacity: 0.75;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            opacity: 0.45;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="nav-line">
+            <a href="https://googology.top" class="back-btn">← RETURN / 返回首页</a>
+        </div>
+
+        <div class="topbar">
+            <h1>GOOGOLOGY_TOOLS<span class="cursor"></span></h1>
+            <div class="subtitle">GOOGOLOGY_NEXUS SUBSYSTEM / GOOGOLOGY_TOOLS</div>
+        </div>
+
+        <section class="category">
+            <div class="category-title">01 展开器网站</div>
+            <div class="grid">
+                <a href="https://hypcos.github.io/notation-explorer/" class="link-card" target="_blank">
+                    <span class="link-title">Notation Explorer</span>
+                    <span class="link-desc">hyp_cos的展开器网站，简称NE，包含了许多常见记号的展开器</span>
+                </a>
+                <a href="https://gyafun.jp/ln/basmat.cgi" class="link-card" target="_blank">
+                    <span class="link-title">BMS展开器</span>
+                    <span class="link-desc">包含了各种版本的BMS展开器，如经典的BM3.3，BM3，BM2等</span>
+                </a>
+                <a href="https://0y.googology.top" class="link-card" target="_blank">
+                    <span class="link-title">0-Y展开器</span>
+                    <span class="link-desc">带山脉图的0-Y展开器，同时对不同项有颜色标记，如紫色是不提升项</span>
+                </a>
+                <a href="https://fghdisplayer.onrender.com/" class="link-card" target="_blank">
+                    <span class="link-title">FGH/φ展开器</span>
+                    <span class="link-desc">LVO内φ函数和FGH的基本列与展开</span>
+                </a>
+                <a href="https://naruyoko.github.io/googology/" class="link-card" target="_blank">
+                    <span class="link-title">naruyoko的网站</span>
+                    <span class="link-desc">包含大量记号的展开器，Y序列的山脉图绘制，BMS可视化等</span>
+                </a>
+                <a href="https://solarzone1010.github.io/" class="link-card" target="_blank">
+                    <span class="link-title">Solarzone的网站</span>
+                    <span class="link-desc">包含了SSO内的BMS分析器，cOCF展开器等</span>
+                </a>
+                <a href="https://waffle3z.github.io/notations/" class="link-card" target="_blank">
+                    <span class="link-title">waffle3z的网站</span>
+                    <span class="link-desc">包含了BrSS、FSS、GSS等展开器</span>
+                </a>
+                <a href="https://fiveyeargaokao.github.io/" class="link-card" target="_blank">
+                    <span class="link-title">omer(fygk)的网站</span>
+                    <span class="link-desc">包含BMS和0-Y的转换器，同样包含Y、ω-Y的山脉绘制，不过更方便</span>
+                </a>
+                <a href="https://gomen520.github.io/" class="link-card" target="_blank">
+                    <span class="link-title">X-Y展开器</span>
+                    <span class="link-desc">gomen的展开器网站,包含ε-Y</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="category">
+            <div class="category-title">02 其他工具</div>
+            <div class="grid">
+                
+            </div>
+        </section>       
+
+        <footer>
+            GOOGOLOGY_NEXUS SYSTEM // TOOLS
+        </footer>
+
+    </div>
+</body>
+</html>
